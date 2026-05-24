@@ -52,3 +52,72 @@ T3 --> O
 T4 --> O
 
 O --> API
+
+
+⚙️ Tech Stack
+Python 3.11
+FastAPI
+Prometheus (metrics backend)
+Kubernetes (target system)
+Docker
+(Optional) Kubernetes deployment
+
+
+🔧 Core Features
+📊 Cluster Observability
+CPU usage per pod
+Memory usage per pod (MB)
+Restart counts
+Namespace-level aggregation
+
+🧠 Tool-Based MCP Design
+cluster_health
+pod_cpu_health
+pod_memory_health
+namespace_health
+📦 Structured JSON Output
+Machine-readable responses
+Ready for dashboards or automation
+
+📥 Example Request
+
+{
+  "action": "cluster_health",
+  "cluster": "prod"
+}
+
+📤 Example Response
+
+{
+  "cluster": "prod",
+  "status": "Degraded",
+  "score": 72,
+  "cpu_usage": [
+    {
+      "namespace": "default",
+      "pod": "api-1",
+      "value": "0.62 cores"
+    }
+  ],
+  "memory_usage": [
+    {
+      "namespace": "default",
+      "pod": "api-1",
+      "value": "512 MB"
+    }
+  ],
+  "alerts": [
+    "High CPU usage in api-1",
+    "Pod restarts detected in worker-2"
+  ]
+}
+
+📊 PromQL Examples Used
+
+CPU Usage
+
+sum(rate(container_cpu_usage_seconds_total{container!="", pod!=""}[5m])) by (namespace, pod)
+
+Memory Usage
+
+sum(container_memory_usage_bytes{container!="", pod!=""}) by (namespace, pod) / 1024 / 1024
