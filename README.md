@@ -170,13 +170,16 @@ O --> API
 
 ## 📥 Example Request
 
+```json
 {
   "action": "cluster_health",
   "cluster": "prod"
 }
+```
 
 ## 📤 Example Response
 
+```json
 {
   "cluster": "prod",
   "status": "Degraded",
@@ -199,8 +202,7 @@ O --> API
     "High CPU usage in api-1",
     "Pod restarts detected in worker-2"
   ]
-}
-
+}```
 ## 📊 PromQL Examples Used
 
 ## CPU Usage
