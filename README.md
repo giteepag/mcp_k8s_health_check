@@ -124,19 +124,23 @@ O --> API
 ## 📊 PromQL Examples Used
 
 ## CPU Usage
-
+```
 sum(rate(container_cpu_usage_seconds_total{container!="", pod!=""}[5m])) by (namespace, pod)
+```
 
 ## Memory Usage
-
+```
 sum(container_memory_usage_bytes{container!="", pod!=""}) by (namespace, pod) / 1024 / 1024
+```
 
 ## 📊 PromQL Examples Used
 
 ## CPU Usage
-
+```
 sum(rate(container_cpu_usage_seconds_total{container!="", pod!=""}[5m])) by (namespace, pod)
+```
 
 ## Memory Usage
-
+```
 sum(container_memory_usage_bytes{container!="", pod!=""}) by (namespace, pod) / 1024 / 1024
+```
