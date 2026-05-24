@@ -118,7 +118,9 @@ O --> API
     "High CPU usage in api-1",
     "Pod restarts detected in worker-2"
   ]
-}```
+}
+```
+
 ## 📊 PromQL Examples Used
 
 ## CPU Usage
