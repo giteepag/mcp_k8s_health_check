@@ -144,3 +144,66 @@ sum(rate(container_cpu_usage_seconds_total{container!="", pod!=""}[5m])) by (nam
 ```
 sum(container_memory_usage_bytes{container!="", pod!=""}) by (namespace, pod) / 1024 / 1024
 ```
+
+## Project Structure
+
+```
+
+mcp-k8s-health-platform/
+│
+├── app/
+│   ├── main.py                  # FastAPI entrypoint
+│   ├── core/
+│   │   ├── config.py           # env vars, settings
+│   │   ├── logger.py           # logging setup
+│   │
+│   ├── api/
+│   │   ├── routes.py           # MCP endpoints
+│   │
+│   ├── mcp/
+│   │   ├── router.py           # action → tool mapping
+│   │   ├── schema.py           # request/response models
+│   │
+│   ├── tools/
+│   │   ├── cluster_health.py
+│   │   ├── cpu_health.py
+│   │   ├── memory_health.py
+│   │   ├── namespace_health.py
+│   │
+│   ├── services/
+│   │   ├── prometheus_client.py   # Prometheus queries
+│   │   ├── k8s_client.py          # optional Kubernetes API
+│   │
+│   ├── models/
+│   │   ├── health.py              # internal data models
+│   │
+│   ├── utils/
+│   │   ├── formatter.py           # JSON + readable output
+│   │   ├── health_score.py        # scoring logic
+│
+│
+├── tests/
+│   ├── test_cluster_health.py
+│   ├── test_cpu.py
+│
+├── k8s/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│
+├── docker/
+│   ├── Dockerfile
+│
+├── scripts/
+│   ├── run_local.sh
+│   ├── load_test.py
+│
+├── docs/
+│   ├── architecture.md
+│   ├── promql_queries.md
+│
+├── .env.example
+├── requirements.txt
+├── README.md
+└── app.py (optional alias entrypoint)
+
+```
