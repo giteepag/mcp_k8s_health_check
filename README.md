@@ -55,7 +55,7 @@ O --> API
 
 ```
 ---
-##⚙️ Tech Stack
+## ⚙️ Tech Stack
  - Python 3.11
  - FastAPI
  - Prometheus (metrics backend)
@@ -65,30 +65,32 @@ O --> API
 
 ---
 
-🔧 Core Features
-📊 Cluster Observability
-CPU usage per pod
-Memory usage per pod (MB)
-Restart counts
-Namespace-level aggregation
+## 🔧 Core Features
+ - 📊 Cluster Observability
+ - CPU usage per pod
+ - Memory usage per pod (MB)
+ - Restart counts
+ - Namespace-level aggregation
 
-🧠 Tool-Based MCP Design
-cluster_health
-pod_cpu_health
-pod_memory_health
-namespace_health
-📦 Structured JSON Output
-Machine-readable responses
-Ready for dashboards or automation
+---
+## 🧠 Tool-Based MCP Design
+ - cluster_health
+ - pod_cpu_health
+ - pod_memory_health
+ - namespace_health
+---
+## 📦 Structured JSON Output
+ - Machine-readable responses
+ - Ready for dashboards or automation
 
-📥 Example Request
+## 📥 Example Request
 
 {
   "action": "cluster_health",
   "cluster": "prod"
 }
 
-📤 Example Response
+## 📤 Example Response
 
 {
   "cluster": "prod",
@@ -114,12 +116,12 @@ Ready for dashboards or automation
   ]
 }
 
-📊 PromQL Examples Used
+## 📊 PromQL Examples Used
 
-CPU Usage
+## CPU Usage
 
 sum(rate(container_cpu_usage_seconds_total{container!="", pod!=""}[5m])) by (namespace, pod)
 
-Memory Usage
+## Memory Usage
 
 sum(container_memory_usage_bytes{container!="", pod!=""}) by (namespace, pod) / 1024 / 1024
