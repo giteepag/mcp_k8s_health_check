@@ -54,15 +54,16 @@ T4 --> O
 O --> API
 
 ```
+---
+##⚙️ Tech Stack
+ - Python 3.11
+ - FastAPI
+ - Prometheus (metrics backend)
+ - Kubernetes (target system)
+ - Docker
+ - (Optional) Kubernetes deployment
 
-⚙️ Tech Stack
-Python 3.11
-FastAPI
-Prometheus (metrics backend)
-Kubernetes (target system)
-Docker
-(Optional) Kubernetes deployment
-
+---
 
 🔧 Core Features
 📊 Cluster Observability
