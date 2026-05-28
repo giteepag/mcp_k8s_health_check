@@ -1,0 +1,6 @@
+venv/
+README.md
+projectinfo.txt
+project-structure.sh
+__pycache__/
+tests
